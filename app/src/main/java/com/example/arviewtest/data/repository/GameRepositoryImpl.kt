@@ -12,11 +12,11 @@ class GameRepositoryImpl(
     private val gameLocalDataSource: GameDataSource,
     private val ioDispatcher: CoroutineDispatcher = Dispatchers.IO
 ) :GameRepository{
-    override fun observeGames(): LiveData<Result<List<Game>>> {
+    override fun observeGames(): LiveData<List<Game>> {
         return gameLocalDataSource.observeGames()
     }
 
-    override suspend fun getGames(forceUpdate: Boolean): Result<List<Game>>  {
+    override suspend fun getGames(): List<Game>  {
         return gameLocalDataSource.getGames()
     }
 

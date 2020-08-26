@@ -26,7 +26,7 @@ class GameLocalDataSource internal constructor(
             Result.Success(gameDao.getGames())
         } catch (e: Exception) {
             Error(e)
-        } as Result<List<Game>>
+        }
     }
 
     override suspend fun saveGame(game: Game) = withContext(ioDispatcher) {

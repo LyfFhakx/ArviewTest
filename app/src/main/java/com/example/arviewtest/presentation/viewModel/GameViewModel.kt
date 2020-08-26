@@ -18,7 +18,9 @@ class GameViewModel(
 
     val _Games = MutableLiveData<List<Game>>()
     val allGames = mutableListOf<Game>()
-    val displayedGames: LiveData<List<Game>> = _Games
+    val displayedGames: LiveData<List<Game>> = gameRepository.observeGames()
+
+
 
     fun initialise() {
         viewModelScope.launch(context = IO) {

@@ -6,9 +6,9 @@ import com.example.arviewtest.data.Result
 
 interface GameRepository {
 
-    fun observeGames(): LiveData<Result<List<Game>>>
+    fun observeGames(): LiveData<List<Game>>
 
-    suspend fun getGames(forceUpdate: Boolean = false): Result<List<Game>>
+    suspend fun getGames():List<Game>
 
     suspend fun saveGame(game: Game)
 }

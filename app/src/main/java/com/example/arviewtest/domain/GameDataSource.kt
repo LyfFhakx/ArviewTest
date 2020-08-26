@@ -11,4 +11,5 @@ interface GameDataSource {
     suspend fun getGames(): Result<List<Game>>
 
     suspend fun saveGame(game: Game)
+
 }

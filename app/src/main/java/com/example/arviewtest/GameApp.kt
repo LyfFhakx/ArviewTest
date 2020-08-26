@@ -3,6 +3,7 @@ package com.example.arviewtest
 import android.app.Application
 import com.example.arviewtest.data.network.Api
 import com.example.arviewtest.data.network.AuthInterceptor
+import com.example.arviewtest.domain.GameRepository
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
@@ -10,14 +11,16 @@ import retrofit2.create
 
 class GameApp : Application() {
 
+    val gameRepository: GameRepository
+        get() = Injector.provideGamesRepository(this)
+
     override fun onCreate() {
         super.onCreate()
-
         initRetrofit()
     }
 
     @Suppress("FunctionName")
-    fun initRetrofit():Api {
+    fun initRetrofit(): Api {
         return Retrofit.Builder()
             .baseUrl("https://api.twitch.tv/kraken/games/top")
             .addConverterFactory(GsonConverterFactory.create())
